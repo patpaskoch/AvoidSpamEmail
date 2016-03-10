@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Email Testing</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<style type="text/css">
+	.forYou{
+		text-decoration: underline;
+		color: blue;
+		cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>Email Testing</h1>
+				<p>Experiment to avoid writing "@" and "mailto" on websites, causes spam, but still keep the click to email functionality</p>
+				<hr>
+				<h5>Standard</h5>
+				<a href="mailto:patpaskoch@gmail.com">patpaskoch@gmail.com</a>
+				<hr>
+
+				<h5>JavaScript</h5>
+				<div class="elecLet">patpaskoch@gmail.com</div> 
+				<p><small>Render the Email with js</small></p>
+				<hr>
+
+
+				<h5>JavaScript 2te Version </h5>
+				<div class="forYou">patpaskoch@gmail.com</div> 
+				<p><small>weder ein @ noch ein mailto im code und ist clickbar</small></p>
+				<hr>
+
+				<h5>HTML Commentare</h5>
+				<a href="mailto<!-- -->:patpaskoch@gmail.com">patpaskoch@gmail.com</a>
+				<small>Tryed to implenent html comments into Email,....not working to klick.</small>
+				<hr>
+			</div>
+		</div>
+		
+	</div>
+
+
+	
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		// First Js Example
+		var mailLink = $('.elecLet')
+		var mailAdress = mailLink.text();
+		var woAt = mailAdress.split('@');
+		mailLink.html('<a href="'+ 'mail' + 'to:' + woAt[0] + '@' + woAt[1] + '">'+ woAt[0] + '@' + woAt[1] +'</a>')
+
+		// Second Js Example
+		var mailLink2 =$('.forYou')
+		var mailAdress2 = mailLink2.text();
+		var woAt2 = mailAdress2.split('@');
+		var email = woAt2[0] + '@' + woAt[1];
+    	var subject = 'Circle Around';
+    	var emailBody = 'Some blah';
+
+		mailLink2.html('<span>'+ woAt2[0] + '(AT)' + woAt2[1] + '<span>');
+		mailLink2.click(function(){
+    		window.location = 'mailto:' + email + '?subject=' + subject + '&body=' +   emailBody;
+		})
+	</script>
+</body>
+</html>
